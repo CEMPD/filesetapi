@@ -56,8 +56,8 @@
 !.........  Internal wrapper data
        TYPE :: CHAR_PTR_ARRAY
            LOGICAL                    :: RDONLY        ! read-only status
-           CHARACTER(LEN=16), POINTER :: VARS( :,: )   ! variable names
            CHARACTER(LEN=16), POINTER :: LNAMES( : )   ! logical file names
+           CHARACTER(LEN=16), POINTER :: VARS( :,: )   ! variable names
        END TYPE
         
        INTEGER                :: NOPENSETS = 0         ! total number of open file sets
