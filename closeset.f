@@ -65,7 +65,7 @@
 !........  Check length of file name
        IF( LEN( ROOTNAME ) > 16 ) THEN
            MESG = 'Max file name length (16) exceeded for "' // 
-     &            ROOTNAME // '"'
+     &            TRIM( ROOTNAME ) // '"'
            CALL M3MSG2( MESG )
            CLOSESET = .FALSE.
            RETURN
