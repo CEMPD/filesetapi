@@ -1,0 +1,41 @@
+
+!***********************************************************************
+!
+!  Include file SETDECL.EXT
+!
+!  DESCRIPTION:
+!     Contains declarations for the FileSetAPI functions
+!
+!  REVISION HISTORY:
+!     Created 6/02 by C. Seppanen
+!
+!***************************************************************************
+!
+! Project Title: FileSetAPI
+! File: @(#)$Id$
+!
+! COPYRIGHT (C) 2002, MCNC Environmental Modeling Center
+! All Rights Reserved
+!
+! Environmental Modeling Center
+! MCNC
+! P.O. Box 12889
+! Research Triangle Park, NC  27709-2889
+!
+! info@emc.mcnc.org
+!
+! Pathname: $Source$
+! Last updated: $Date$ 
+!
+!*************************************************************************
+
+       LOGICAL       OPENSET     ! open a file set
+       LOGICAL       DESCSET     ! get file set description
+       LOGICAL       READSET     ! read from a file set
+       LOGICAL       WRITESET    ! write to a file set
+       LOGICAL       CLOSESET    ! close a file set
+       CHARACTER*16  PROMPTSET   ! prompt for file name, then open file set
+       
+       EXTERNAL  OPENSET, DESCSET, READSET, WRITESET, CLOSESET, 
+     &           PROMPTSET
+     
