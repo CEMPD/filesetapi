@@ -94,10 +94,13 @@
 
        CALL CLEANUP( FILEIDX )
        NOPENSETS = NOPENSETS - 1
-       
-       MESG = 'Closing file set "' // TRIM( ROOTNAME ) // '"'
-       CALL M3MSG2( MESG )
-       
+
+!........  Write message only if file set contains more than one file       
+       IF( SIZE( FILE_INFO( FILEIDX )%LNAMES ) > 1 ) THEN       
+           MESG = 'Closing file set "' // TRIM( ROOTNAME ) // '"'
+           CALL M3MSG2( MESG )
+       END IF      
+ 
        CLOSESET = .TRUE.
 
        END FUNCTION CLOSESET
