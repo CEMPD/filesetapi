@@ -44,6 +44,7 @@
 
 !........  Include files
        INCLUDE 'IODECL3.EXT'  ! I/O API function declarations
+       INCLUDE 'SETDECL.EXT'
 
 !........  External functions
        INTEGER, EXTERNAL :: INDEX1
