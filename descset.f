@@ -50,8 +50,8 @@
        INTEGER,           EXTERNAL :: STR2INT
        
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
-       INTEGER,       INTENT(IN) :: FILENUM   ! position of file in set or ALLFILES
+       CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
+       INTEGER,      INTENT(IN) :: FILENUM   ! position of file in set or ALLFILES
 
 !........  Local variables
        INTEGER            I           ! counter
