@@ -53,20 +53,20 @@
        INCLUDE 'IODECL3.EXT'  ! I/O API function declarations
 
 !........  External functions
-       LOGICAL,           EXTERNAL :: SETENVVAR
-       INTEGER,           EXTERNAL :: RMFILE
-       INTEGER,           EXTERNAL :: INDEX1
-       CHARACTER(LEN=10), EXTERNAL :: GETCFDSC
-       INTEGER,           EXTERNAL :: STR2INT
-       LOGICAL,           EXTERNAL :: CLOSESET
-       LOGICAL,           EXTERNAL :: CHKSETDESC
-       LOGICAL,           EXTERNAL :: CHKFILESET
-       LOGICAL,           EXTERNAL :: CREATESET
+       LOGICAL,       EXTERNAL :: SETENVVAR
+       INTEGER,       EXTERNAL :: RMFILE
+       INTEGER,       EXTERNAL :: INDEX1
+       CHARACTER(10), EXTERNAL :: GETCFDSC
+       INTEGER,       EXTERNAL :: STR2INT
+       LOGICAL,       EXTERNAL :: CLOSESET
+       LOGICAL,       EXTERNAL :: CHKSETDESC
+       LOGICAL,       EXTERNAL :: CHKFILESET
+       LOGICAL,       EXTERNAL :: CREATESET
         
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
-       INTEGER      , INTENT(IN) :: FSTATUS   ! file mode/status (read/write, unknown)
-       CHARACTER*(*), INTENT(IN) :: PGNAME    ! name of calling program
+       CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
+       INTEGER,      INTENT(IN) :: FSTATUS   ! file mode/status (read/write, unknown)
+       CHARACTER(*), INTENT(IN) :: PGNAME    ! name of calling program
 
 !........  Local variables
        INTEGER            I           ! counter
@@ -82,17 +82,17 @@
        LOGICAL            TEMPEXIST   ! true: temporary file name exists on disk
        LOGICAL            EFLAG       ! true: error occured
 
-       CHARACTER(LEN=2)   NFILESTR    ! number of files as a string
-       CHARACTER(LEN=4)   NVARSTR     ! number of variables as a string
-       CHARACTER(LEN=2)   INTBUF      ! integer string buffer
-       CHARACTER(LEN=16)  ROOTNAME16  ! fixed length root file name
-       CHARACTER(LEN=16)  PGNAME16    ! fixed length calling program name
-       CHARACTER(LEN=16)  LNAME       ! temporary logical name
-       CHARACTER(LEN=256) ENVNAME     ! environment variable value for ROOTNAME
-       CHARACTER(LEN=256) TEMPNAME    ! temporary physical file name
-       CHARACTER(LEN=256) MESG        ! message buffer
+       CHARACTER(2)       NFILESTR    ! number of files as a string
+       CHARACTER(4)       NVARSTR     ! number of variables as a string
+       CHARACTER(2)       INTBUF      ! integer string buffer
+       CHARACTER(16)      ROOTNAME16  ! fixed length root file name
+       CHARACTER(16)      PGNAME16    ! fixed length calling program name
+       CHARACTER(16)      LNAME       ! temporary logical name
+       CHARACTER(256)     ENVNAME     ! environment variable value for ROOTNAME
+       CHARACTER(256)     TEMPNAME    ! temporary physical file name
+       CHARACTER(256)     MESG        ! message buffer
        
-       CHARACTER(LEN=16) :: FUNCNAME = 'OPENSET'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'OPENSET'  ! function name
 
 !---------------------------------
 !  Begin body of function OPENSET
@@ -105,7 +105,7 @@
            DO I = 1, MXFILE3
                NULLIFY( FILE_INFO( I )%VARS, FILE_INFO( I )%LNAMES )
            END DO
-        	
+ 
            INITIAL = .FALSE.
        END IF
 

@@ -49,14 +49,14 @@
        INTEGER, EXTERNAL :: INDEX1
        
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
+       CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
 
 !........  Local variables
        INTEGER            I           ! counter
        INTEGER            FILEIDX     ! file index
        
-       CHARACTER(LEN=16)  ROOTNAME16  ! fixed length root file name
-       CHARACTER(LEN=256) MESG        ! message buffer
+       CHARACTER(16)  ROOTNAME16  ! fixed length root file name
+       CHARACTER(256) MESG        ! message buffer
 
 !---------------------------------
 !  Begin body of function CLOSESET

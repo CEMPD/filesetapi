@@ -46,9 +46,9 @@
 !........  Local variables
        INTEGER  IOS  ! I/O status
 
-       CHARACTER(LEN=300) MESG  ! message buffer
+       CHARACTER(300) MESG                    ! message buffer
 
-       CHARACTER(LEN=16) :: PROGNAME = 'CLEANUP'  ! program name
+       CHARACTER(16) :: PROGNAME = 'CLEANUP'  ! program name
 
 !-----------------------------------
 !  Begin body of subroutine CLEANUP       

@@ -45,9 +45,9 @@
        INCLUDE 'IODECL3.EXT'  ! I/O API function declarations
        
 !........  External functions
-       INTEGER,           EXTERNAL :: INDEX1
-       CHARACTER(LEN=10), EXTERNAL :: GETCFDSC
-       INTEGER,           EXTERNAL :: STR2INT
+       INTEGER,       EXTERNAL :: INDEX1
+       CHARACTER(10), EXTERNAL :: GETCFDSC
+       INTEGER,       EXTERNAL :: STR2INT
        
 !........  Function arguments
        CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
@@ -63,13 +63,13 @@
        INTEGER            NFILEINT    ! number of files as an integer
        INTEGER            NVARINT     ! number of variables as an integer
 
-       CHARACTER(LEN=2)   NFILESTR    ! number of files as a string
-       CHARACTER(LEN=4)   NVARSTR     ! number of variables as a string       
-       CHARACTER(LEN=16)  ROOTNAME16  ! fixed length root file name
-       CHARACTER(LEN=16)  LNAME       ! temporary logical name
-       CHARACTER(LEN=256) MESG        ! message buffer
+       CHARACTER(2)   NFILESTR        ! number of files as a string
+       CHARACTER(4)   NVARSTR         ! number of variables as a string       
+       CHARACTER(16)  ROOTNAME16      ! fixed length root file name
+       CHARACTER(16)  LNAME           ! temporary logical name
+       CHARACTER(256) MESG            ! message buffer
 
-       CHARACTER(LEN=16) :: FUNCNAME = 'DESCSET'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'DESCSET'  ! function name
        
 !---------------------------------
 !  Begin body of function DESCSET

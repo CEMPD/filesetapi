@@ -49,10 +49,10 @@
        LOGICAL, EXTERNAL :: SETENVVAR
 
 !........  Subroutine arguments
-       INTEGER,            INTENT(IN) :: FIDX      ! file index
-       CHARACTER(LEN=16),  INTENT(IN) :: RNAME     ! root logical file name
-       CHARACTER(LEN=256), INTENT(IN) :: PHYSNAME  ! physical file name
-       INTEGER,            INTENT(IN) :: FSTATUS   ! file mode (read, read/write)
+       INTEGER,        INTENT(IN) :: FIDX      ! file index
+       CHARACTER(16),  INTENT(IN) :: RNAME     ! root logical file name
+       CHARACTER(256), INTENT(IN) :: PHYSNAME  ! physical file name
+       INTEGER,        INTENT(IN) :: FSTATUS   ! file mode (read, read/write)
        
 !........  Local variables
        INTEGER I, J, K              ! counters
@@ -63,12 +63,12 @@
        
        LOGICAL EFLAG                ! true: error has occurred
        
-       CHARACTER(LEN=2)   INTBUF    ! integer string buffer
-       CHARACTER(LEN=16)  LNAME     ! temporary logical file name
-       CHARACTER(LEN=256) TEMPNAME  ! temporary physical file name
-       CHARACTER(LEN=300) MESG      ! message buffer
+       CHARACTER(2)   INTBUF        ! integer string buffer
+       CHARACTER(16)  LNAME         ! temporary logical file name
+       CHARACTER(256) TEMPNAME      ! temporary physical file name
+       CHARACTER(300) MESG          ! message buffer
 
-       CHARACTER(LEN=16) :: PROGNAME = 'CREATESET'  ! program name
+       CHARACTER(16) :: PROGNAME = 'CREATESET'  ! program name
 
 !-------------------------------------
 !  Begin body of function CREATESET

@@ -48,20 +48,20 @@
        INTEGER, ALLOCATABLE :: VARS_PER_FILE( : )  ! number of variables per file
 
 !.........  Arrays for storing variable information (dim: NVARSET)
-       INTEGER,           ALLOCATABLE :: VTYPESET( : )  ! variable types
-       CHARACTER(LEN=16), ALLOCATABLE :: VNAMESET( : )  ! variable names
-       CHARACTER(LEN=16), ALLOCATABLE :: VUNITSET( : )  ! variable units
-       CHARACTER(LEN=80), ALLOCATABLE :: VDESCSET( : )  ! variable descriptions
+       INTEGER,       ALLOCATABLE :: VTYPESET( : )  ! variable types
+       CHARACTER(16), ALLOCATABLE :: VNAMESET( : )  ! variable names
+       CHARACTER(16), ALLOCATABLE :: VUNITSET( : )  ! variable units
+       CHARACTER(80), ALLOCATABLE :: VDESCSET( : )  ! variable descriptions
 
 !.........  Internal wrapper data
        TYPE :: CHAR_PTR_ARRAY
-           LOGICAL                    :: RDONLY        ! read-only status
-           CHARACTER(LEN=16), POINTER :: LNAMES( : )   ! logical file names
-           CHARACTER(LEN=16), POINTER :: VARS( :,: )   ! variable names
+           LOGICAL                :: RDONLY        ! read-only status
+           CHARACTER(16), POINTER :: LNAMES( : )   ! logical file names
+           CHARACTER(16), POINTER :: VARS( :,: )   ! variable names
        END TYPE
         
        INTEGER                :: NOPENSETS = 0         ! total number of open file sets
-       CHARACTER(LEN=16)      :: RNAMES( MXFILE3 )     ! logical file names for open file sets
+       CHARACTER(16)          :: RNAMES( MXFILE3 )     ! logical file names for open file sets
        TYPE( CHAR_PTR_ARRAY ) :: FILE_INFO( MXFILE3 )  ! file information for open file sets
        
        END MODULE MODFILESET
