@@ -21,15 +21,15 @@
 ! Project Title: FileSetAPI
 ! File: @(#)$Id$
 !
-! COPYRIGHT (C) 2002, MCNC Environmental Modeling Center
+! COPYRIGHT (C) 2004, Environmental Modeling for Policy Development
 ! All Rights Reserved
 !
-! Environmental Modeling Center
-! MCNC
-! P.O. Box 12889
-! Research Triangle Park, NC  27709-2889
+! Carolina Environmental Program
+! University of North Carolina at Chapel Hill
+! 137 E. Franklin St., CB# 6116
+! Chapel Hill, NC 27599-6116
 !
-! info@emc.mcnc.org
+! smoke@unc.edu
 !
 ! Pathname: $Source$
 ! Last updated: $Date$ 
