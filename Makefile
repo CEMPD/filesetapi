@@ -24,7 +24,7 @@ lib: $(FSMODALL) $(FILES)
 
 debug: $(FSMODALL) $(FILES)
 	ar rv $(FS_BIN)/libfileset.debug.a $(FILES) 
-	ar rv $(FS_BIN)/libfileset.debug.a ($FSMODALL)
+	ar rv $(FS_BIN)/libfileset.debug.a $(FSMODALL)
 #
 # Module and include dependencies
 #
