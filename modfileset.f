@@ -42,9 +42,6 @@
        INCLUDE 'PARMS3.EXT'  ! I/O API parameters
        INCLUDE 'FDESC3.EXT'  ! I/O API file description data structures
 
-!.........  Parameters
-       INTEGER, PARAMETER :: ALLFILES = -1         ! flag: read all files in set
-
 !.........  File set information        
        INTEGER              :: NVARSET             ! total number of variables in the file set
        INTEGER              :: NFILESET            ! total number of files in the file set
