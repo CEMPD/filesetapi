@@ -49,8 +49,8 @@
        INTEGER TOTALFILES  ! total number of files
        INTEGER TOTALVARS   ! total number of variables
        
-       CHARACTER(LEN=16)  FNAME    ! logical file name
-       CHARACTER(LEN=300) MESG     ! message buffer
+       CHARACTER(16)  FNAME        ! logical file name
+       CHARACTER(300) MESG         ! message buffer
        
        LOGICAL :: EFLAG = .FALSE.  ! true: error found
        
@@ -64,8 +64,8 @@
 !........  Check that total number of files is consistent
        TOTALFILES = SIZE( FILE_INFO( FIDX )%LNAMES )
        IF( TOTALFILES /= NFILESET ) THEN
-       	   WRITE( MESG,91010 )
-       	   CALL M3MSG2( MESG )
+           WRITE( MESG,91010 )
+           CALL M3MSG2( MESG )
            WRITE( MESG,91020 ) 'Inconsistent number of files ' //
      &                         'for file set ' // TRIM( FNAME )
            CALL M3MSG2( MESG )
@@ -79,8 +79,8 @@
 !........  Check that total number of vars is consistent
        TOTALVARS = SIZE( FILE_INFO( FIDX )%VARS,1 )
        IF( TOTALVARS /= NVARSET ) THEN
-       	   WRITE( MESG,91010 )
-       	   CALL M3MSG2( MESG )
+           WRITE( MESG,91010 )
+           CALL M3MSG2( MESG )
            WRITE( MESG,91020 ) 'Inconsistent number of variables ' //
      &                         'for file set ' // TRIM( FNAME )
            CALL M3MSG2( MESG )
@@ -93,7 +93,7 @@
 
 !........  Set function value and return
        IF( EFLAG ) THEN
-       	   CHKFILESET = .FALSE.
+           CHKFILESET = .FALSE.
        ELSE
            CHKFILESET = .TRUE.
        END IF

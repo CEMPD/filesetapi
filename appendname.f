@@ -38,10 +38,10 @@
        IMPLICIT NONE
 
 !........  Subroutine arguments
-       CHARACTER*(*), INTENT(IN)  :: ORIGNAME  ! original file name
-       INTEGER      , INTENT(IN)  :: FILENUM   ! number to append to name
-       CHARACTER*(*), INTENT(OUT) :: NEWNAME   ! new file name
-       LOGICAL      , INTENT(OUT) :: EFLAG     ! true if error occurs
+       CHARACTER(*), INTENT(IN)  :: ORIGNAME  ! original file name
+       INTEGER,      INTENT(IN)  :: FILENUM   ! number to append to name
+       CHARACTER(*), INTENT(OUT) :: NEWNAME   ! new file name
+       LOGICAL,      INTENT(OUT) :: EFLAG     ! true if error occurs
 
 !........  Local arguments
        INTEGER          IDX     ! string index
@@ -49,7 +49,7 @@
        INTEGER          ORGLEN  ! length of original name
        INTEGER          NEWLEN  ! length of new name
        INTEGER          TMPLEN  ! length of temporary name
-       CHARACTER(LEN=2) INTBUF  ! buffer for integer value
+       CHARACTER(2)     INTBUF  ! buffer for integer value
 
 !--------------------------------------
 !  Begin body of subroutine APPENDNAME
@@ -74,8 +74,8 @@
 
 !........  Check that FILENUM is two characters or less
        IF( FILENUM < 1 .OR. FILENUM >= 100 ) THEN
-       	   EFLAG = .TRUE.
-       	   RETURN
+           EFLAG = .TRUE.
+           RETURN
        END IF
 
 !........  Write integer to string

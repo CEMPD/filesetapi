@@ -1,5 +1,6 @@
 
-       CHARACTER*16 FUNCTION PROMPTSET( PROMPT, FMODE, DEFAULT, CALLER )
+       CHARACTER(16) FUNCTION PROMPTSET( PROMPT, FMODE, DEFAULT,
+     &                                   CALLER )
 
 !***********************************************************************
 !  Function body starts at line 39
@@ -44,13 +45,13 @@
        LOGICAL, EXTERNAL :: OPENSET
        
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN) :: PROMPT   ! prompt for user
-       INTEGER,       INTENT(IN) :: FMODE    ! file opening mode
-       CHARACTER*(*), INTENT(IN) :: DEFAULT  ! default logical file name
-       CHARACTER*(*), INTENT(IN) :: CALLER   ! name of calling program
+       CHARACTER(*), INTENT(IN) :: PROMPT   ! prompt for user
+       INTEGER,      INTENT(IN) :: FMODE    ! file opening mode
+       CHARACTER(*), INTENT(IN) :: DEFAULT  ! default logical file name
+       CHARACTER(*), INTENT(IN) :: CALLER   ! name of calling program
 
 !........  Local parameters
-       CHARACTER(LEN=16), PARAMETER :: NONE16 = 'NONE'
+       CHARACTER(16), PARAMETER :: NONE16 = 'NONE'
        
 !........  Local variables
        INTEGER            IOS                ! I/O status
@@ -60,11 +61,11 @@
        LOGICAL, SAVE ::   INITIAL = .TRUE.   ! true: first time
        LOGICAL            NFLAG              ! true: "NONE" is in the prompt 
        
-       CHARACTER(LEN=16)  LNAME              ! logical file name
-       CHARACTER(LEN=300) MESG               ! message buffer
-       CHARACTER(LEN=512) BUFFER             ! prompt buffer
+       CHARACTER(16)  LNAME                  ! logical file name
+       CHARACTER(300) MESG                   ! message buffer
+       CHARACTER(512) BUFFER                 ! prompt buffer
        
-       CHARACTER(LEN=16) :: FUNCNAME = 'PROMPTSET'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'PROMPTSET'  ! function name
        
 !------------------------------------
 !  Begin body of function PROMPTSET
@@ -72,8 +73,8 @@
 
 !........  On first time, check if prompt should be shown
        IF( INITIAL ) THEN
-       	   PROMPTON = ENVYN( 'PROMPTFLAG', 'Prompt for input flag',
-     &  	             .TRUE., IOS )
+           PROMPTON = ENVYN( 'PROMPTFLAG', 'Prompt for input flag',
+     &                       .TRUE., IOS )
            INITIAL = .FALSE.
        END IF
 
@@ -81,7 +82,7 @@
        NFLAG = ( INDEX( PROMPT, '"NONE"' ) > 0 )
        
        IF( PROMPTON ) THEN
-       	
+
 !............  Construct actual prompt
            WRITE( BUFFER,94000 ) TRIM( PROMPT ), ' [',
      &                           TRIM( DEFAULT ), '] >>'
@@ -176,6 +177,6 @@
 
 94000  FORMAT( 12( A, : ) )
 
-95000  FORMAT ( /5X , A , $ )          !  generic prompt format.
+95000  FORMAT ( /5X, A )          !  generic prompt format.
 
        END FUNCTION PROMPTSET
