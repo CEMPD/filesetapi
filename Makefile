@@ -34,10 +34,10 @@ chksetdesc.o: $(MODFILESET)
 cleanup.o:    $(MODFILESET)
 closeset.o:   $(MODFILESET) $(IOINC)/IODECL3.EXT
 createset.o:  $(MODFILESET) $(IOINC)/IODECL3.EXT
-descset.o:    $(MODFILESET) $(IOINC)/IODECL3.EXT $(FS_ROOT)/SETDECL.EXT
+descset.o:    $(MODFILESET) $(IOINC)/IODECL3.EXT
 openset.o:    $(MODFILESET) $(IOINC)/IODECL3.EXT
-readset.o:    $(MODFILESET) $(IOINC)/IODECL3.EXT $(FS_ROOT)/SETDECL.EXT
-writeset.o:   $(MODFILESET) $(IOINC)/IODECL3.EXT $(FS_ROOT)/SETDECL.EXT
+readset.o:    $(MODFILESET) $(IOINC)/IODECL3.EXT
+writeset.o:   $(MODFILESET) $(IOINC)/IODECL3.EXT
 
 clean: 
 	/bin/rm -f *.o $(FS_BIN)/*.o $(FS_BIN)/*.mod $(FS_BIN)/*.M
