@@ -5,7 +5,7 @@
 # Makefile for FileSetAPI library
 
 .f.o:
-	$(FC) $(FFLAGS) -c -o $@ $<
+	$(FC) $(FFLAGS) $(FS_BIN)/modfileset.o $(FS_BIN)/modfileset.d -c -o $@ $< 
 .F.o:
 	$(FC) $(FFLAGS) -c -o $@ $<
 
@@ -27,6 +27,7 @@ $(MODFILESET): $(FS_ROOT)/modfileset.f $(IOINC)/PARMS3.EXT $(IOINC)/FDESC3.EXT
 	$(FC) $(FFLAGS) -c -o $@ $(FS_ROOT)/modfileset.f
 	if ( test -f modfileset.mod ) ; then mv modfileset.mod $(FS_BIN) ; fi
 	if ( test -f modfileset.M   ) ; then mv modfileset.M   $(FS_BIN) ; fi
+#	if ( test -f modfileset.d   ) ; then mv modfileset.d   $(FS_BIN) ; fi
 	if ( test -f MODFILESET.mod ) ; then mv MODFILESET.mod $(FS_BIN) ; fi
 
 #
@@ -44,4 +45,4 @@ readset.F: $(MODFILESET) $(IOINC)/IODECL3.EXT
 writeset.F: $(MODFILESET) $(IOINC)/IODECL3.EXT
 
 clean: 
-	/bin/rm -f *.o $(FS_BIN)/*.o $(FS_BIN)/*.mod $(FS_BIN)/*.M
+	/bin/rm -f *.o *.d work.pc* $(FS_BIN)/*.o $(FS_BIN)/*.mod $(FS_BIN)/*.M
