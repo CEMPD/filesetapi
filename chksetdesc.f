@@ -41,7 +41,7 @@
        IMPLICIT NONE
 
 !........  Function arguments
-       CHARACTER(LEN=16), INTENT(IN) :: FNAME  ! logical file name
+       CHARACTER(16), INTENT(IN) :: FNAME  ! logical file name
               
 !........  Local variables
        INTEGER              I                        ! counter
@@ -50,9 +50,9 @@
        
        LOGICAL ::           EFLAG = .FALSE.          ! true: error found
        
-       CHARACTER(LEN=300)   MESG                     ! message buffer
+       CHARACTER(300)   MESG                     ! message buffer
        
-       CHARACTER(LEN=16) :: FUNCNAME = 'CHKSETDESC'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'CHKSETDESC'  ! function name
        
 !------------------------------------
 !  Begin body of function CHKSETDESC
@@ -118,7 +118,7 @@
            END IF
        END DO
 
-!........  Check that total number of vars is consistent       	
+!........  Check that total number of vars is consistent
        IF( TOTALVARS /= NVARSET ) THEN
            MESG = 'Inconsistent number of variables in file set ' //
      &            TRIM( FNAME )
@@ -152,7 +152,7 @@
 
 !........  Set function value and return
        IF( EFLAG ) THEN
-       	   CHKSETDESC = .FALSE.
+           CHKSETDESC = .FALSE.
        ELSE
            CHKSETDESC = .TRUE.
        END IF

@@ -49,17 +49,17 @@
        INTEGER, EXTERNAL :: INDEX1
        
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
-       CHARACTER*(*), INTENT(IN) :: VNAME     ! variable name or ALLVAR3
-       INTEGER,       INTENT(IN) :: FILENUM   ! position of file in set or ALLFILES
-       INTEGER,       INTENT(IN) :: JDATE     ! date (YYYYDDD)
-       INTEGER,       INTENT(IN) :: JTIME     ! time (HHMMSS)
-       REAL,          INTENT(IN) :: BUFFER(*) ! array to hold data
+       CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
+       CHARACTER(*), INTENT(IN) :: VNAME     ! variable name or ALLVAR3
+       INTEGER,      INTENT(IN) :: FILENUM   ! position of file in set or ALLFILES
+       INTEGER,      INTENT(IN) :: JDATE     ! date (YYYYDDD)
+       INTEGER,      INTENT(IN) :: JTIME     ! time (HHMMSS)
+       REAL,         INTENT(IN) :: BUFFER(*) ! array to hold data
 
        INTEGER, PARAMETER :: ALLFILES = -1
 
 !........  Local arrays
-       INTEGER	          TYPSIZE( 6 )           !  sizeof( variable ) / sizeof( real )
+       INTEGER            TYPSIZE( 6 )           !  sizeof( variable ) / sizeof( real )
 #if _CRAY || REAL8
        DATA               TYPSIZE / 1, 1, 1, 1, 1, 1 /
 #endif
@@ -73,13 +73,13 @@
        INTEGER            MEMIDX      ! index into BUFFER array
        INTEGER            DELTA       ! increment amount
 
-       CHARACTER(LEN=16)  ROOTNAME16  ! fixed length root file name
-       CHARACTER(LEN=16)  VNAME16     ! fixed length variable name
-       CHARACTER(LEN=16)  LNAME       ! temporary logical name
-       CHARACTER(LEN=16)  SIGNAME     ! logical name for specific file
-       CHARACTER(LEN=256) MESG        ! message buffer
+       CHARACTER(16)  ROOTNAME16      ! fixed length root file name
+       CHARACTER(16)  VNAME16         ! fixed length variable name
+       CHARACTER(16)  LNAME           ! temporary logical name
+       CHARACTER(16)  SIGNAME         ! logical name for specific file
+       CHARACTER(256) MESG            ! message buffer
        
-       CHARACTER(LEN=16) :: FUNCNAME = 'WRITESET'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'WRITESET'  ! function name
 
 !---------------------------------
 !  Begin body of function WRITESET
@@ -153,13 +153,13 @@
            IF( VNAME16 == ALLVAR3 ) THEN
                IF( .NOT. WRITE3( SIGNAME, VNAME, 
      &                           JDATE, JTIME, BUFFER ) ) THEN
-     	           WRITESET = .FALSE.
-     	           RETURN
-     	       ELSE
-     	           WRITESET = .TRUE.
-     	           RETURN
-     	       END IF
-     	   END IF           
+                   WRITESET = .FALSE.
+                   RETURN
+               ELSE
+                   WRITESET = .TRUE.
+                   RETURN
+               END IF
+           END IF           
        END IF
 
 !........  Check that requested variable is in file set
@@ -176,7 +176,7 @@
                END IF
            END DO
 
-!............  Couldn't find variable name, exit with error           	
+!............  Couldn't find variable name, exit with error
            IF( LNAME == ' ' ) THEN
                MESG = 'Requested variable "' // VNAME16 // '" not ' //
      &                'available in file set "' // ROOTNAME16 // '"'
@@ -200,9 +200,9 @@
 !............  Try to write to file
            IF( .NOT. WRITE3( LNAME, VNAME16,
      &                       JDATE, JTIME, BUFFER ) ) THEN
-     	       WRITESET = .FALSE.
-     	       RETURN
-     	   END IF
+               WRITESET = .FALSE.
+               RETURN
+           END IF
            
        ELSE
 
@@ -223,9 +223,9 @@
 !................  Try to write to from file
                IF( .NOT. WRITE3( LNAME, VNAME16, 
      &                           JDATE, JTIME, BUFFER( MEMIDX ) ) ) THEN
-     	           WRITESET = .FALSE.
-     	           RETURN
-     	       END IF
+                   WRITESET = .FALSE.
+                   RETURN
+               END IF
 
 !................  For each file type, calculate amount of space one variable takes
                SELECT CASE( FTYPE3D )

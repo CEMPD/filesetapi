@@ -49,18 +49,18 @@
        INTEGER, EXTERNAL :: INDEX1
        
 !........  Function arguments
-       CHARACTER*(*), INTENT(IN)  :: ROOTNAME  ! logical file name for file set
-       CHARACTER*(*), INTENT(IN)  :: VNAME     ! variable name or ALLVAR3
-       INTEGER,       INTENT(IN)  :: LAYER     ! layer number or ALLAYS3
-       INTEGER,       INTENT(IN)  :: FILENUM   ! position of file in set or ALLFILES
-       INTEGER,       INTENT(IN)  :: JDATE     ! date (YYYYDDD)
-       INTEGER,       INTENT(IN)  :: JTIME     ! time (HHMMSS)
-       REAL,          INTENT(OUT) :: BUFFER(*) ! array to hold data
+       CHARACTER(*), INTENT(IN)  :: ROOTNAME  ! logical file name for file set
+       CHARACTER(*), INTENT(IN)  :: VNAME     ! variable name or ALLVAR3
+       INTEGER,      INTENT(IN)  :: LAYER     ! layer number or ALLAYS3
+       INTEGER,      INTENT(IN)  :: FILENUM   ! position of file in set or ALLFILES
+       INTEGER,      INTENT(IN)  :: JDATE     ! date (YYYYDDD)
+       INTEGER,      INTENT(IN)  :: JTIME     ! time (HHMMSS)
+       REAL,         INTENT(OUT) :: BUFFER(*) ! array to hold data
 
        INTEGER, PARAMETER :: ALLFILES = -1
 
 !........  Local arrays
-       INTEGER	          TYPSIZE( 6 )           !  sizeof( variable ) / sizeof( real )
+       INTEGER            TYPSIZE( 6 )           !  sizeof( variable ) / sizeof( real )
 #if _CRAY || REAL8
        DATA               TYPSIZE / 1, 1, 1, 1, 1, 1 /
 #endif
@@ -75,13 +75,13 @@
        INTEGER            NLAYERS     ! number of layers to read (either 1 or all)
        INTEGER            DELTA       ! increment amount
 
-       CHARACTER(LEN=16)  ROOTNAME16  ! fixed length root file name
-       CHARACTER(LEN=16)  VNAME16     ! fixed length variable name
-       CHARACTER(LEN=16)  LNAME       ! temporary logical name
-       CHARACTER(LEN=16)  SIGNAME     ! logical name for specific file
-       CHARACTER(LEN=256) MESG        ! message buffer
+       CHARACTER(16)  ROOTNAME16      ! fixed length root file name
+       CHARACTER(16)  VNAME16         ! fixed length variable name
+       CHARACTER(16)  LNAME           ! temporary logical name
+       CHARACTER(16)  SIGNAME         ! logical name for specific file
+       CHARACTER(256) MESG            ! message buffer
        
-       CHARACTER(LEN=16) :: FUNCNAME = 'READSET'  ! function name
+       CHARACTER(16) :: FUNCNAME = 'READSET'  ! function name
 
 !---------------------------------
 !  Begin body of function READSET
@@ -157,13 +157,13 @@
            IF( VNAME16 == ALLVAR3 ) THEN
                IF( .NOT. READ3( SIGNAME, VNAME, LAYER, 
      &                          JDATE, JTIME, BUFFER ) ) THEN
-     	           READSET = .FALSE.
-     	           RETURN
-     	       ELSE
-     	           READSET = .TRUE.
-     	           RETURN
-     	       END IF
-     	   END IF           
+                   READSET = .FALSE.
+                   RETURN
+               ELSE
+                   READSET = .TRUE.
+                   RETURN
+               END IF
+           END IF           
        END IF
 
 !........  Check that requested variable is in file set
@@ -180,7 +180,7 @@
                END IF
            END DO
 
-!............  Couldn't find variable name, exit with error           	
+!............  Couldn't find variable name, exit with error
            IF( LNAME == ' ' ) THEN
                MESG = 'Requested variable "' // VNAME16 // '" not ' //
      &                'available in file set "' // ROOTNAME16 // '"'
@@ -204,9 +204,9 @@
 !............  Try to read file
            IF( .NOT. READ3( LNAME, VNAME16, LAYER, 
      &                      JDATE, JTIME, BUFFER ) ) THEN
-     	       READSET = .FALSE.
-     	       RETURN
-     	   END IF
+               READSET = .FALSE.
+               RETURN
+           END IF
            
        ELSE
 
@@ -227,10 +227,10 @@
 !................  Try to read from file
                IF( .NOT. READ3( LNAME, VNAME16, LAYER, 
      &                          JDATE, JTIME, BUFFER( MEMIDX ) ) ) THEN
-     	           READSET = .FALSE.
-     	           RETURN
-     	       END IF
-     	       
+                   READSET = .FALSE.
+                   RETURN
+               END IF
+
 !................  Increment BUFFER index based on total amount of memory this file takes
                IF( LAYER == ALLAYS3 ) THEN
                    NLAYERS = NLAYS3D
