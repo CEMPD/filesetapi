@@ -5,7 +5,7 @@
 # Makefile for FileSetAPI library
 
 .f.o:
-	$(FC) $(FFLAGS) $(FS_BIN)/modfileset.o $(FS_BIN)/modfileset.d -c -o $@ $< 
+	$(FC) $(FFLAGS) -c -o $@ $<
 .F.o:
 	$(FC) $(FFLAGS) -c -o $@ $<
 
