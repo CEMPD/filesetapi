@@ -51,8 +51,8 @@ case Linux2_alpha:
     breaksw
 case Linux2_x86ifc:
     setenv FC  ifc
-    setenv FFLAGS   "$FFLAGS -I${IOINC}"
-    setenv DBGFLAGS "$DBGFLAGS -I${IOINC}"
+    setenv FFLAGS   "$FFLAGS -I${IOINC} -I${FS_BIN}"
+    setenv DBGFLAGS "$DBGFLAGS -I${IOINC} -I${FS_BIN}"
     setenv LDIRS    "-L${FS_BIN}"
     breaksw
 case Linux2_x86pg:
