@@ -44,7 +44,6 @@
 
 !........  Include files
        INCLUDE 'IODECL3.EXT'  ! I/O API function declarations
-       INCLUDE 'SETDECL.EXT'
 
 !........  External functions
        INTEGER, EXTERNAL :: INDEX1
@@ -57,6 +56,8 @@
        INTEGER,       INTENT(IN)  :: JDATE     ! date (YYYYDDD)
        INTEGER,       INTENT(IN)  :: JTIME     ! time (HHMMSS)
        REAL,          INTENT(OUT) :: BUFFER(*) ! array to hold data
+
+       INTEGER, PARAMETER :: ALLFILES = -1
 
 !........  Local arrays
        INTEGER	          TYPSIZE( 6 )           !  sizeof( variable ) / sizeof( real )

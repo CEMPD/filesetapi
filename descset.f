@@ -43,7 +43,6 @@
        
 !........  Include files
        INCLUDE 'IODECL3.EXT'  ! I/O API function declarations
-       INCLUDE 'SETDECL.EXT'
        
 !........  External functions
        INTEGER,           EXTERNAL :: INDEX1
@@ -53,6 +52,8 @@
 !........  Function arguments
        CHARACTER(*), INTENT(IN) :: ROOTNAME  ! logical file name for file set
        INTEGER,      INTENT(IN) :: FILENUM   ! position of file in set or ALLFILES
+  
+       INTEGER, PARAMETER :: ALLFILES = -1
 
 !........  Local variables
        INTEGER            I           ! counter
