@@ -9,25 +9,24 @@
 #
 ##################################################################
 
-if ( $?EDSS_SUBSYS ) then
-
+if ( $?SMK_SUBSYS ) then
+   
    #  Set directory names
-   setenv FS_ROOT    $EDSS_SUBSYS/filesetapi     # FileSetAPI source and root 
-   setenv IOINC      $EDSS_SUBSYS/ioapi_includes # I/O API include files
+   setenv FS_ROOT    $SMK_SUBSYS/filesetapi     # FileSetAPI source and root 
+   setenv IOINC      $SMK_SUBSYS/ioapi_includes # I/O API include files
 
-   if ( $?EDSS_EXE ) then
-      setenv  FS_BIN "$FS_ROOT/$EDSS_EXE"
+   if ( $?SMOKE_EXE ) then
+      setenv  FS_BIN "$FS_ROOT/$SMOKE_EXE"
    endif
 
    #  Get system-specific flags
-   source $EDSS_SUBSYS/filesetapi/sysflags
+   source $SMK_SUBSYS/filesetapi/sysflags
 
 else
-   echo "ERROR: FileSetAPI \"Setup\" script requires setting of the EDSS_SUBSYS"
+   echo "ERROR: FileSetAPI \"Setup\" script requires setting of the SMK_SUBSYS"
    echo "       environment variable prior to using it."
    set status = 1
 
 endif
-
 
 exit( $status )
