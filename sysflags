@@ -34,6 +34,7 @@ case HP_UX11f90:
     setenv LDIRS    "+U77 -Wl,-L,${FS_BIN}"
     breaksw
 case AIX4n64f90:
+case AIX5f90:
 case AIX4f90:
     setenv FFLAGS   "$FFLAG -I${IOINC} -I${FS_BIN}"
     setenv DBGFLAGS "$DBGFLAG -I${IOINC} -I${FS_BIN}"
