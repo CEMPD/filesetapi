@@ -47,7 +47,9 @@
        INTEGER              I                        ! counter
        INTEGER              IOS                      ! I/O status
        INTEGER              TOTALVARS                ! total number of variables
-       
+
+       REAL                 MXVARS                   ! real MXVARS3 from ioapi param
+ 
        LOGICAL ::           EFLAG = .FALSE.          ! true: error found
        
        CHARACTER(300)   MESG                     ! message buffer
@@ -59,6 +61,7 @@
 !------------------------------------
        
        EFLAG = .FALSE.
+       MXVARS = MXVARS3
 
 !........  Check that total number of variables is valid
        IF( NVARSET <= 0 ) THEN
@@ -74,24 +77,25 @@
            MESG = 'Number of variables per file array is not ' //
      &            'allocated for file set ' // TRIM( FNAME ) // ';'
            CALL M3MSG2( MESG )
-           MESG = 'using default of 120 variables per file'
+           WRITE( MESG,'( 10(A,I5) )' ) 
+     &         'using default of ',MXVARS3,' variables per file'
            CALL M3MSG2( MESG )
            
-           NFILESET = CEILING( NVARSET / 120. )  ! real division, convert back to int
+           NFILESET = CEILING( NVARSET / MXVARS )  ! real division, convert back to int
            ALLOCATE( VARS_PER_FILE( NFILESET ), STAT=IOS )
            CALL CHECKMEM( IOS, 'VARS_PER_FILE', FUNCNAME )
 
            TOTALVARS = NVARSET
            I = 1
            DO
-               IF( TOTALVARS - 120 <= 0 ) THEN
+               IF( TOTALVARS - MXVARS3 <= 0 ) THEN
                    VARS_PER_FILE( I ) = TOTALVARS
                    EXIT
                ELSE
-                   VARS_PER_FILE( I ) = 120
+                   VARS_PER_FILE( I ) = MXVARS3
                END IF
                
-               TOTALVARS = TOTALVARS - 120
+               TOTALVARS = TOTALVARS - MXVARS3 
                I = I + 1
            END DO
 
@@ -106,13 +110,14 @@
        END IF
 
 !........  Count total number of variables in VARS_PER_FILE;
-!..        also check that number of variables per file is not more than 120
+!..        also check that number of variables per file is not more than MXVARS3
        TOTALVARS = 0
        DO I = 1, NFILESET
            TOTALVARS = TOTALVARS + VARS_PER_FILE( I )
-           IF( VARS_PER_FILE( I ) > 120 ) THEN
-               MESG = 'More than 120 variables per file ' //
-     &                'in file set ' // TRIM( FNAME )
+           IF( VARS_PER_FILE( I ) > MXVARS3 ) THEN
+               WRITE( MESG,'( 10(A,I5) )' ) 
+     &             'More than',MXVARS3,' variables per file '//
+     &             'in file set ' // TRIM( FNAME )
                CALL M3MSG2( MESG )
                EFLAG = .TRUE.
            END IF
