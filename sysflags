@@ -55,7 +55,7 @@ case Linux2_x86_64ifort:
     setenv DBGFLAGS "$DBGFLAG -I${IOINC} -I${FS_BIN}"
     setenv LDIRS    "-L${FS_BIN}"
     breaksw
-case Linux2_x86pg:
+case Linux2_x86_64pg:
     setenv FFLAGS   "$FFLAG -I${IOINC} -I${FS_BIN}"
     setenv DBGFLAGS "$DBGFLAG -I${IOINC} -I${FS_BIN}"
     setenv LDIRS    "-L${FS_BIN}"
